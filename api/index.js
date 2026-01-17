@@ -3,7 +3,7 @@ const cors = require("cors");
 const { MongoClient } = require("mongodb");
 
 const app = express();
-const url = "process.env.MONGO_URI";
+const url = process.env.MONGO_URI;
 const DB_NAME = "video-project";
 
 app.use(cors());
