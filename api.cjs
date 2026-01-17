@@ -1,37 +1,14 @@
-<<<<<<< HEAD
-require("dotenv").config();
-=======
->>>>>>> 40ef30de56c5f3d3f6a8b29a06351f9179971cfb
 const express = require("express");
 const cors = require("cors");
 const { MongoClient } = require("mongodb");
 
 const app = express();
-<<<<<<< HEAD
-const url = process.env.MONGODB_URI ;
-const DB_NAME = "video-project";
-const PORT = process.env.PORT || 10000;
-
-=======
 const url = "mongodb://127.0.0.1:27017";
 const DB_NAME = "video-project";
->>>>>>> 40ef30de56c5f3d3f6a8b29a06351f9179971cfb
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-<<<<<<< HEAD
-let db;
-async function getDB() {
-  if (!db) {
-    const client = new MongoClient(url);
-    await client.connect();
-    db = client.db(DB_NAME);
-  }
-  return db;
-}
-=======
->>>>>>> 40ef30de56c5f3d3f6a8b29a06351f9179971cfb
 
 function getDB() {
   return MongoClient.connect(url).then(client => client.db(DB_NAME));
@@ -117,8 +94,4 @@ app.delete("/delete-video/:id", async (req, res) => {
   res.json({ message: "Video Deleted Successfully" });
 });
 
-<<<<<<< HEAD
-app.listen(PORT, () => console.log("🚀 API Running on http://127.0.0.1:5050"));
-=======
 app.listen(5050, () => console.log("🚀 API Running on http://127.0.0.1:5050"));
->>>>>>> 40ef30de56c5f3d3f6a8b29a06351f9179971cfb
