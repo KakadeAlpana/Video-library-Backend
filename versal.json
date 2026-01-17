@@ -1,7 +1,8 @@
 {
+  "version": 2,
   "builds": [
     {
-      "src": "./api.cjs",
+      "src": "api.cjs",
       "use": "@vercel/node"
     }
   ],

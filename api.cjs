@@ -3,7 +3,7 @@ const cors = require("cors");
 const { MongoClient } = require("mongodb");
 
 const app = express();
-const url = "mongodb://127.0.0.1:27017";
+const url = "process.env.MONGO_URI";
 const DB_NAME = "video-project";
 
 app.use(cors());
@@ -13,7 +13,12 @@ app.use(express.urlencoded({ extended: true }));
 function getDB() {
   return MongoClient.connect(url).then(client => client.db(DB_NAME));
 }
-
+app.get("/", (req, res) => {
+  res.status(200).json({
+    status: "OK",
+    message: "Video Library Backend is running 🚀"
+  });
+});
 /* =================== GET CATEGORIES =================== */
 app.get("/get-categories", async (req, res) => {
   try {
@@ -94,4 +99,5 @@ app.delete("/delete-video/:id", async (req, res) => {
   res.json({ message: "Video Deleted Successfully" });
 });
 
-app.listen(5050, () => console.log("🚀 API Running on http://127.0.0.1:5050"));
+// app.listen(5050, () => console.log("🚀 API Running on http://127.0.0.1:5050"));
+module.exports = app;
